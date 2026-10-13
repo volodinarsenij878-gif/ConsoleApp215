@@ -1,0 +1,30 @@
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    namespace Program56
+    {
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Доход за год (руб): ");
+            if (double.TryParse(Console.ReadLine(), out double income) && income >= 0)
+            {
+                double taxRate;
+                if (income <= 2_400_000) taxRate = 0.13;
+                else if (income <= 5_000_000) taxRate = 0.15;
+                else taxRate = 0.18;
+
+                double tax = income * taxRate;
+                Console.WriteLine($"Ставка: {taxRate:P0}, налог: {tax:F2} руб.");
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: доход должен быть неотрицательным.");
+            }
+        }
+    }
+    }
